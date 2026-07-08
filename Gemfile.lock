@@ -155,9 +155,6 @@ GEM
     prism (1.9.0)
     puma (8.0.2)
       nio4r (~> 2.0)
-    puma-daemon (0.5.0)
-      puma (>= 5.0)
-      rack
     racc (1.8.1)
     rack (3.2.6)
     rack-session (2.1.2)
@@ -270,7 +267,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   puma
-  puma-daemon
   rails (~> 7.1.6)
   rspec-rails
   sprockets-rails
