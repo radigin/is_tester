@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<div class="page-header">
-  <h1>
-    Добро пожаловать!
-  </h1>
-</div>
-
 <%= form_tag({controller: :nobody, action: :start_page}) do %>
-  <div class="modal fade in" tabindex="-1" style="display: block;">
+  <div class="modal" tabindex="-1" style="display: block;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          <h1>
+            Добро пожаловать!
+          </h1>
+        </div>
+        <div class="modal-body">
           <div class="text-success">
             <fieldset>
               <legend>
@@ -33,12 +32,14 @@
               </div>
             </fieldset>
           </div>
+          <div class = "modal-footer">
+            <div>
+              <%= link_to 'Зарегистрироваться', new_user_path %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<div>
-  <%= link_to 'Зарегистрироваться', new_user_path %>
-</div>
