@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<%= form_tag users_path, method: :get do %>
+  <fieldset>
+    <legend>
+      Поиск
+    </legend>
+    <div class = 'field'>
+      <%= text_field_tag('search', params['search'], class: 'form-control') %>
+    </div>
+    <div class = 'actions'>
+      <%= submit_tag('Искать', class: 'btn btn-primary') %>
+    </div>
+  </fieldset>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        User login
+        <% if @current_user_object.is_real_admin? %>
+          <%= link_to('↕', users_path(sort: :user_login)) %>
+        <% end %>
+      </th>
+      <% if @current_user_object.is_real_admin? %>
+        <th>User password</th>
+      <% end %>
+      <th>
+        Email
+        <% if @current_user_object.is_real_admin? %>
+          <%= link_to('↕', users_path(sort: :email)) %>
+        <% end %>
+      </th>
+      <% if @current_user_object.is_real_admin? %>
+        <th>
+          Is admin
+          <%= link_to('↕', users_path(sort: :is_real_admin)) %>
+          <%= link_to('♔', users_path(filter: 1)) %>
+          <%= link_to('♙', users_path(filter: 0)) %>
+        </th>
+      <% end %>
+      <th>Hobbies</th>  
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.user_login %></td>
+        <% if @current_user_object.is_real_admin? %>
+          <td><%= user.user_password %></td>
+        <% end %>
+        <td><%= user.email %></td>
+        <% if @current_user_object.is_real_admin? %>
+          <td><%= user.is_real_admin %></td>
+        <% end %>
+        <td class = "hobbies">
+          <%  hb = user.hobbies.to_s.size > 120 ? user.hobbies.mb_chars[0..119].to_s + '...' : user.hobbies.to_s %>
+          <% hb.split('|').each do |hb| %>
+            <span>
+              <%= hb %>
+            </span>
+          <% end %>
+        </td>  
+        <td><%= link_to 'Show', user, class: 'btn btn-primary' %></td>
+        <% if @current_user_object.is_real_admin? or @current_user_object == user %>
+          <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-success' %></td>
+        <% end %>
+        <% if @current_user_object.is_real_admin? %> 
+          <td><%= button_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
+        <td>
+          <% if user.user_desc.present? %>
+            <%= link_to 'Show desc', user.user_desc, class: 'btn btn-primary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path, class: 'btn btn-warning' %>

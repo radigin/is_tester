@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :user_descs
+  resources :users
   get 'nobody/access_denied'
   get 'nobody/login'
   get 'nobody/logout'
+  get 'nobody/start_page'
+  post 'nobody/start_page'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -9,5 +13,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "nobody#login"
+  root "nobody#start_page"
 end

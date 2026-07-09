@@ -1,2 +1,44 @@
-<h1>Nobody#login</h1>
-<p>Find me in app/views/nobody/login.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h1>
+    Добро пожаловать!
+  </h1>
+</div>
+
+<%= form_tag({controller: :nobody, action: :start_page}) do %>
+  <div class="modal fade in" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="text-success">
+            <fieldset>
+              <legend>
+                Введите логин и пароль
+              </legend>
+              <div class="field">
+                <%= label_tag('auth_login') do %>
+                  Логин
+                <% end %>
+                <%= text_field_tag('auth_login', '', class: 'form-control') %>
+              </div>
+              <div class="field">
+                <%= label_tag('auth_password') do %>
+                  Пароль
+                <% end %>
+                <%= password_field_tag('auth_password', '', class: 'form-control') %>
+              </div>
+              <div class="actions">
+                <%= submit_tag('Войти', class: 'btn btn-primary') %>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to 'Зарегистрироваться', new_user_path %>
+</div>

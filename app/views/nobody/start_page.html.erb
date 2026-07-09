@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  Вы авторизованы в системе, как:
+  <%= @current_user_object.user_login %>
+</h1>
+
+<h3>
+  Разделы системы:
+</h3>
+
+<ol>
+  <li>
+    <%= link_to 'Пользователи', users_path, class: 'btn btn-primary' %>
+  </li>
+</ol>

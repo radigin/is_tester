@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <div class = "container">  
+    <div style = "text-align: right;">
+      <%= link_to 'В начало', {controller: :nobody, action: :start_page}, class: 'btn btn-primary' %>
+      <%= link_to 'Выход', {controller: :nobody, action: :logout}, class: 'btn btn-danger' %>
+    </div> 
     <%= yield %>
+  </div>
   </body>
 </html>

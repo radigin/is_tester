@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User login:</strong>
+  <%= @user.user_login %>
+</p>
+
+<% if @current_user_object.try(:is_real_admin?) %>
+  <p>
+    <strong>User password:</strong>
+    <%= @user.user_password %>
+  </p>
+<% end %>  
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Hobbies:</strong>
+  <ul>
+    <% @user.hobbies.to_s.split('|').each do |x| %>
+    <li><%= x %></li>
+    <% end %>
+  </ul>
+</p>
+
+<% if @current_user_object.try(:is_real_admin?) %>
+  <p>
+    <strong>Is admin:</strong>
+    <%= @user.is_real_admin %>
+  </p>
+<% end %>
+  
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-success' %> |
+<%= link_to 'Back', users_path, class: 'btn btn-primary' %>
