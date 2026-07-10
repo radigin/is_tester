@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       @users = User.where("(is_real_admin IS NULL OR is_real_admin = 0) AND user_login != 'test'")
     end
     if params.has_key?(:search)
-      @users = @users.where("lower(user_login) like lower(?)", "#{params['search']}%")
+      @users = @users.where("lower(user_login) like lower('#{params['search']}%')")
     end
     @users = @users.all  
   end

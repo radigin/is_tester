@@ -3,9 +3,9 @@ u = User.create(user_login: 'test', user_password: 'TEST', is_real_admin: 0,
 u = User.create(user_login: 'admin', user_password: 'ADMINNIMDA', is_real_admin: 1, 
   email: 'admin@test.ru')
 u = User.create(user_login: 'admin2', user_password: 'ADMINNIMDA', is_real_admin: 1, 
-  email: 'admin@test.ru')
+  email: 'admin2@test.ru')
 u = User.create(user_login: 'admin3', user_password: 'ADMINNIMDA', is_real_admin: 1, 
-  email: 'admin@test.ru')
+  email: 'admin3@test.ru')
 u = User.create(user_login: 'ivanov', user_password: 'fdjfhkjdsfkjs', is_real_admin: 0, 
   email: 'ivanov@test.ru')
 ud = UserDesc.create(lname: 'Иванов', fname: 'Иван', sname: 'Иванович', 
