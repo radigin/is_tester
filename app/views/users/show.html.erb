@@ -21,7 +21,7 @@
   <strong>Hobbies:</strong>
   <ul>
     <% @user.hobbies.to_s.split('|').each do |x| %>
-    <li><%= x %></li>
+    <li><%== x %></li>
     <% end %>
   </ul>
 </p>
