@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     end
 
     def check_ctr_auth()
-      return true if [:new, :create, :edit].include?(action_name.to_sym)
+      return true if [:new, :create].include?(action_name.to_sym)
       return true if @current_user_object.is_real_admin?
       return true if [:index].include?(action_name.to_sym)
       if [:show].include?(action_name.to_sym)
@@ -96,6 +96,16 @@ class UsersController < ApplicationController
         end
         if @user.is_real_admin? == false and @user.user_login != 'test'
           return true   
+        end
+      end
+      if [:update, :edit].include?(action_name.to_sym)
+        if @user.nil?
+          set_user()
+        end
+        if @current_user_object == @user
+          return true
+        else
+          return false
         end
       end
       return false

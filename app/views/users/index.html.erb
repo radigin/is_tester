@@ -59,7 +59,7 @@
           <td><%= user.is_real_admin %></td>
         <% end %>
         <td class = "hobbies">
-          <%  hb = user.hobbies.to_s.size > 120 ? user.hobbies.mb_chars[0..119].to_s + '...' : user.hobbies.to_s %>
+          <%  hb = user.hobbies.to_s.size > 20 ? user.hobbies.mb_chars[0..19].to_s + '...' : user.hobbies.to_s %>
           <% hb.split('|').each do |hb| %>
             <span>
               <%= hb %>
